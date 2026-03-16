@@ -1,44 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Gülşen Hukuk Bürosu</title>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gülşen Hukuk Bürosu</title>
+
 <style>
+
 body{
-font-family: Arial;
 margin:0;
+font-family:'Inter',sans-serif;
 background:#f4f4f4;
+color:#222;
+line-height:1.7;
 }
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* HERO */
 
 header{
-background:#1e2a38;
+background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f");
+background-size:cover;
+background-position:center;
 color:white;
-padding:20px;
 text-align:center;
+padding:160px 20px;
 }
 
+header h1{
+font-family:'Playfair Display',serif;
+font-size:70px;
+letter-spacing:2px;
+margin:0;
+}
+
+header p{
+font-size:20px;
+letter-spacing:3px;
+margin-top:15px;
+border-top:3px solid #cdbb9a;
+display:inline-block;
+padding-top:12px;
+}
+
+/* NAVBAR */
+
 nav{
-background:#333;
-padding:10px;
-text-align:center;
+position:sticky;
+top:0;
+display:flex;
+justify-content:center;
+gap:40px;
+padding:18px;
+background:white;
+border-bottom:1px solid #e3e3e3;
+font-weight:500;
+letter-spacing:1px;
+z-index:1000;
 }
 
 nav a{
-color:white;
-margin:15px;
-text-decoration:none;
+position:relative;
 }
+
+nav a::after{
+content:'';
+position:absolute;
+width:0;
+height:2px;
+background:#cdbb9a;
+left:0;
+bottom:-6px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* SECTIONS */
 
 section{
-padding:40px;
+max-width:1200px;
+margin:auto;
+padding:90px 20px;
 }
 
-footer{
-background:#1e2a38;
-color:white;
+h2{
 text-align:center;
-padding:15px;
+font-family:'Playfair Display',serif;
+font-size:46px;
+margin-bottom:60px;
 }
+
+/* TEAM */
+
+.team{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:0.35s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+.card img{
+width:140px;
+height:140px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+}
+
+.card h3{
+font-family:'Playfair Display',serif;
+margin-bottom:6px;
+}
+
+.card p{
+color:#777;
+font-size:14px;
+}
+
+/* SERVICES */
+
+.services-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+}
+
+.service{
+background:white;
+padding:32px;
+border-left:6px solid #cdbb9a;
+font-weight:600;
+transition:0.35s;
+cursor:pointer;
+}
+
+.service:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,0.12);
+}
+
+.service-detail{
+display:none;
+margin-top:18px;
+font-weight:400;
+font-size:14px;
+color:#555;
+line-height:1.7;
+}
+
+.service.active{
+background:#fafafa;
+}
+
+.service.active .service-detail{
+display:block;
+}
+
+/* HARITA */
+
+.map{
+margin-top:40px;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* FOOTER */
+
+footer{
+background:#1a1a1a;
+color:white;
+font-size:14px;
+margin-top:60px;
+}
+
+.contact-bar{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items:center;
+gap:40px;
+padding:20px;
+max-width:1200px;
+margin:auto;
+}
+
+footer a{
+color:#cdbb9a;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:white;
+padding:14px 18px;
+border-radius:50px;
+font-weight:bold;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+z-index:999;
+}
+
+.whatsapp:hover{
+transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+.contact-bar{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
 </style>
 </head>
 
@@ -46,25 +245,152 @@ padding:15px;
 
 <header>
 <h1>Gülşen Hukuk Bürosu</h1>
-<p>Hukuk & Danışmanlık</p>
+<p>Avukatlık & Danışmanlık Hizmetleri</p>
 </header>
 
-<nav>
-<a href="#">Ana Sayfa</a>
-<a href="#">Hakkımızda</a>
-<a href="#">Çalışma Alanları</a>
-<a href="#">Makaleler</a>
-<a href="#">İletişim</a>
+</nav>
+<a href="#home">Ana Sayfa</a>
+<a href="#about">Hakkımızda</a>
+<a href="#services">Çalışma Alanlarımız</a>
+<a href="#career">Gülşen Hukukta Kariyer</a>
+<a href="#contact">İletişim</a>
 </nav>
 
-<section>
+<section id="home">
 <h2>Hoş Geldiniz</h2>
-<p>Gülşen Hukuk Bürosu olarak Gayrimenkul Hukuku, Ceza Hukuku, Borçlar Hukuku, İş Hukuku, Aile Hukuku, Ticaret Hukuku ve İdare Hukuku alanlarında müvekkillerimize profesyonel danışmanlık sunmaktayız.</p>
+<p style="max-width:750px;margin:auto;text-align:center;font-size:18px">
+Gülşen Hukuk Bürosu olarak, bireysel ve kurumsal hukuki sorunlarınızın çözümünde avukatlık ve danışmanlık hizmeti sunmaktayız.
+</p>
+</section>
+
+<section id="about">
+<h2>EKİBİMİZ</h2>
+
+<div class="team">
+
+<div class="card">
+<img src="https://via.placeholder.com/140">
+<h3>Av. Recep Gülşen</h3>
+<p>İstanbul Üniversitesi Hukuk Fakültesi</p>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/140">
+<h3>Arabulucu Av. Nurbanu Gülşen</h3>
+<p>Marmara Üniversitesi Hukuk Fakültesi</p>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/140">
+<h3>Av. Azmi Gülşen</h3>
+<p>Selçuk Üniversitesi Hukuk Fakültesi</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="services">
+
+<h2>Çalışma Alanlarımız</h2>
+
+<div class="services-container">
+
+<div class="service" onclick="toggleService(this)">
+Gayrimenkul Hukuku
+<div class="service-detail">
+Ortaklığın Giderilmesi Davaları, Tapu İptal ve Tescil Davaları, El Atmanın Önlenmesi Davaları, Kat Karşılığı İnşaat Sözleşmelerinden Doğan Davalar, Kadastro Tespitinden Kaynaklanan Davalar, Ruhsatsız Yapıdan Kaynaklı Davalar, Ecrimisil Davaları, Taşkın Yapıdan Kaynaklı Davalar.
+</div>
+</div>
+
+<div class="service">Ceza Hukuku</div>
+
+<div class="service">Tazminat Hukuku</div>
+
+<div class="service" onclick="toggleService(this)">
+Borçlar Hukuku
+<div class="service-detail">
+Sözleşmelerden Kaynaklanan Her Türlü Dava ve Takip İşleri, Sebepsiz Zenginleşme Kaynaklı Davalar, Haksız Fiilden Kaynaklı Tazminat Davaları.
+</div>
+</div>
+
+<div class="service">İş Hukuku</div>
+
+<div class="service" onclick="toggleService(this)">
+Ticaret Hukuku
+<div class="service-detail">
+Şirketler Hukuku, Kıymetli Evrak, Çek ve Senet Hukuku, Ticari İşletme Hukuku
+</div>
+</div>
+
+<div class="service" onclick="toggleService(this)">
+İdare Hukuku
+<div class="service-detail">
+İdari İşlemlerin İptali Davaları, İdari İşlem ve Eylemlerden Kaynaklanan Tam Yargı (Alacak) Davaları, Memuriyete İlişkin Davalar.
+</div>
+</div>
+
+
+<div class="service" onclick="toggleService(this)">
+Aile ve Boşanma Hukuku
+<div class="service-detail">
+Boşanma Davaları, Velayet Davaları, Nafaka Davaları, Evliliğin Feshi ve İptali Davaları.
+</div>
+</div>
+
+<div class="service" onclick="toggleService(this)">
+Miras Hukuku
+<div class="service-detail">
+Muris Muvazaasından Kaynaklana Davalar, Tenkis Davaları.
+</div>
+</div>
+
+<div class="service">Kira Hukuku</div>
+
+</div>
+
+</section>
+<section id="career">
+
+<h2>Gülşen Hukukta Kariyer</h2>
+
+<p style="max-width:750px; margin:auto; text-align:center; font-size:1.1em;">
+
+Gülşen Hukuk Bürosu olarak, yeni mezun veya konusunda deneyimli avukatların ve stajyerlerin başvurularını değerlendirmekte ve kariyer gelişimlerini desteklemekteyiz.
+
+Özgeçmişlerinizi gulsenavukatlik@hotmail.com adresine gönderebilirsiniz.
+
+</p>
+
 </section>
 
 <footer>
-<p>© 2026 Gülşen Hukuk Bürosu</p>
+
+<div class="contact-bar">
+
+<div>📞 0324-515-5525</div>
+
+<div>✉️ gulsenavukatlik@hotmail.com</div>
+
+<div>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+</svg>
+
+<span>Merkez Mah. Türbe Cad. No:49 Ömer Seçkin Apt. Kat:2 D:3, Erdemli / Mersin</span>
+
+<a href="https://maps.app.goo.gl/eqTmyrEJGcnrtBs36" target="_blank">Haritada Gör</a>
+
+</div>
+
+</div>
+
 </footer>
 
-</body>
+<script>
+function toggleService(el){
+el.classList.toggle("active");
+}
+</script></body>
 </html>
