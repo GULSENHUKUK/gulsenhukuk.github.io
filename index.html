@@ -1,343 +1,298 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gülşen Hukuk Bürosu</title>
-<style>
-/* Genel Ayarlar */
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #f8f7f5; /* Arka plan rengi değişti */
-    color: #222;
-    line-height: 1.7;
-}
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-a:hover { color: #cdbb9a; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gülşen Hukuk Bürosu</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Inter:wght@300;400;700&display=swap">
 
-/* HERO */
-header {
-    position: relative;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1589829545856-d10d557cf95f") center/cover no-repeat;
-    color: white;
-    text-align: center;
-    padding: 200px 20px 140px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 72px;
-    margin: 0;
-    letter-spacing: 2px;
-    font-weight: 700;
-}
-header p {
-    font-size: 22px;
-    letter-spacing: 3px;
-    margin-top: 15px;
-    border-top: 3px solid #cdbb9a;
-    display: inline-block;
-    padding-top: 12px;
-}
+    <style>
+        :root {
+            --bg: #ffffff;
+            --dark: #121212;
+            --accent: #b5a482; /* Altın/Vizon rengi tonu */
+            --gray: #f4f4f4;
+            --text-muted: #666;
+        }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: center; /* ortalama */
-    gap: 70px; /* linkler arası mesafe artırıldı */
-    padding: 25px;
-    background: white;
-    border-bottom: 1px solid #e3e3e3;
-    font-weight: 700; /* kalınlaştırıldı */
-    letter-spacing: 1px;
-    color: #111; /* koyu renk */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-/* Navbar linkleri */
-nav a {
-    font-weight: 700; /* kalın */
-    color: #111; /* koyu ve belirgin */
-    position: relative;
-    padding: 5px 0;
-}
+        body {
+            background: var(--bg);
+            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* Navbar hover */
-nav a:hover { color: #cdbb9a; }
+        .container { padding: 0 8%; max-width: 1400px; margin: 0 auto; }
 
-/* SECTION BAŞLIKLARI */
-h2 {
-    text-align: center; /* ortala */
-    font-family: 'Playfair Display', serif;
-    font-size: 48px; /* biraz daha büyük */
-    margin-bottom: 80px; /* section arası mesafe artırıldı */
-    font-weight: 700; /* kalın */
-    color: #111; /* koyu */
-    position: relative;
-}
+        /* Navigasyon */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid #eee;
+        }
 
-/* SECTION GENEL */
-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 90px 20px;
-}
-h2 {
-    text-align: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 46px;
-    margin-bottom: 60px;
-    position: relative;
-}
-h2::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background: #cdbb9a;
-    margin: 12px auto 0;
-}
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+        }
 
-/* TEAM */
-.team {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-}
-.card {
-    background: white;
-    padding: 40px;
-    border-radius: 16px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    transition: 0.35s;
-    overflow: hidden;
-}
-.card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-}
-.card img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 4px solid #cdbb9a;
-}
-.card h3 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 6px;
-    font-size: 20px;
-}
-.card p {
-    color: #777;
-    font-size: 14px;
-}
+        .logo { font-weight: 800; letter-spacing: 2px; font-size: 1.2rem; text-transform: uppercase; text-decoration: none; color: inherit; }
+        .logo span { font-weight: 200; opacity: 0.5; }
 
-/* SERVICES */
-.services-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 30px;
-}
-.service {
-    background: white;
-    padding: 30px;
-    border-left: 6px solid #cdbb9a;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    transition: 0.35s;
-}
-.service::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(205,187,154,0.05);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s;
-    z-index: 0;
-}
-.service:hover::before { transform: scaleX(1); }
-/* Hover ile detay görünür olacak şekilde */
-.service-detail {
-    display: none;
-    margin-top: 18px;
-    font-weight: 400;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.7;
-    position: relative;
-    z-index: 1;
-}
-.service:hover .service-detail { display: block; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 30px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
 
-/* CAREER */
-#career p { font-size: 1.1em; text-align: center; max-width: 750px; margin: auto; }
+        /* Hero */
+        header {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            background: var(--gray);
+            margin-top: 60px;
+        }
 
-/* FOOTER */
-footer {
-    background: #1a1a1a;
-    color: white;
-    font-size: 14px;
-    margin-top: 60px;
-}
-.contact-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-footer a { color: #cdbb9a; }
+        .hero-content { padding: 0 8%; }
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 7.5rem);
+            font-weight: 300;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+        .hero-tagline {
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 400;
+        }
 
-/* WHATSAPP */
-.whatsapp {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25D366;
-    color: white;
-    padding: 14px 18px;
-    border-radius: 50px;
-    font-weight: bold;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: 0.3s;
-}
-.whatsapp:hover { transform: scale(1.05); }
+        section { padding: 100px 0; border-bottom: 1px solid #f0f0f0; }
+        .section-label { font-size: 0.7rem; letter-spacing: 5px; font-weight: 800; margin-bottom: 40px; display: block; color: var(--text-muted); text-transform: uppercase; }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    .contact-bar{ flex-direction: column; text-align: center; }
-    header h1 { font-size: 50px; }
-    header p { font-size: 18px; }
-}
-</style>
+        /* Ekibimiz - YENİ FOTOĞRAF STİLLERİ */
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; align-items: start; }
+        
+        .member { 
+            border-top: 1px solid #121212; 
+            padding-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Fotoğraf ve metni ortala */
+            text-align: center;
+        }
+
+        /* Fotoğraf Konteyneri: Minimalist, dairesel ve vurgulu */
+        .member-photo-container {
+            width: 180px; /* İdeal portre boyutu */
+            height: 180px;
+            border-radius: 50%; /* Tam daire */
+            overflow: hidden; /* Dışarı taşan kısımları kes */
+            margin-bottom: 25px; /* Metinle mesafe */
+            border: 2px solid var(--accent); /* İnce, altın tonlu çerçeve */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Çok hafif gölge */
+            background: #fff; /* Fotoğraf yüklenene kadar beyaz fon */
+            transition: transform 0.3s ease;
+        }
+        
+        .member:hover .member-photo-container {
+            transform: translateY(-5px); /* Hafifçe yukarı kalkma efekti */
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fotoğrafı kareye sığdır, bozma */
+            object-position: center top; /* Portrelerde baş kısmını odakla */
+        }
+
+        .member h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 500; margin-bottom: 10px; color: var(--dark); }
+        .member p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
+
+        /* Çalışma Alanları */
+        .dark-section { background: var(--dark); color: #fff; border: none; }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 100px; }
+        .service-item { border-bottom: 1px solid #333; padding-bottom: 30px; }
+        .service-item h4 { font-size: 1.4rem; font-weight: 400; margin-bottom: 15px; font-family: 'Cormorant Garamond', serif; color: var(--accent); }
+        .service-item p { font-size: 0.85rem; opacity: 0.7; font-weight: 300; }
+
+        /* Kariyer */
+        #career p { max-width: 800px; color: var(--text-muted); }
+
+        /* Footer */
+        footer { background: #fafafa; padding: 80px 0 40px; border-top: 1px solid #eee; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: flex-start; }
+        .contact-info p { margin-bottom: 10px; font-size: 0.9rem; color: var(--text-muted); }
+        
+        /* Sabit WhatsApp Butonu */
+        .wa-float { 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            background: #25D366; 
+            color: #fff; 
+            padding: 15px 25px; 
+            font-size: 0.8rem; 
+            font-weight: 800; 
+            letter-spacing: 1px; 
+            text-decoration: none; 
+            z-index: 9999;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .wa-float:hover { background: #1eb956; transform: scale(1.05); }
+
+        /* Harita Butonu */
+        .map-btn { 
+            display: inline-block; margin-top: 15px; font-size: 0.75rem; 
+            font-weight: 800; letter-spacing: 2px; text-decoration: none; color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+        .map-btn:hover { border-bottom-color: var(--dark); color: var(--dark); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .services-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { flex-direction: column; gap: 40px; }
+            .nav-links { display: none; }
+            .member-photo-container { width: 150px; height: 150px; }
+        }
+        @media (max-width: 600px) {
+            .team-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>Gülşen Hukuk Bürosu</h1>
-    <p>Avukatlık & Danışmanlık Hizmetleri</p>
-</header>
-
-<nav>
-    <a href="#home">Ana Sayfa</a>
-    <a href="#about">Hakkımızda</a>
-    <a href="#services">Çalışma Alanlarımız</a>
-    <a href="#career">Kariyer</a>
-    <a href="#contact">İletişim</a>
-</nav>
-
-<section id="home">
-    <h2>Hoş Geldiniz</h2>
-    <p>
-    Gülşen Hukuk Bürosu olarak, bireysel ve kurumsal hukuki sorunlarınızın çözümünde avukatlık ve danışmanlık hizmeti sunmaktayız.
-    </p>
-</section>
-
-<section id="about">
-<h2>EKİBİMİZ</h2>
-<div class="team">
-    <div class="card">
-        <img src="https://via.placeholder.com/140">
-        <h3>Av. Recep Gülşen</h3>
-        <p>İstanbul Üniversitesi Hukuk Fakültesi</p>
-    </div>
-    <div class="card">
-        <img src="https://via.placeholder.com/140">
-        <h3>Arabulucu Av. Nurbanu Gülşen</h3>
-        <p>Marmara Üniversitesi Hukuk Fakültesi</p>
-    </div>
-    <div class="card">
-        <img src="https://via.placeholder.com/140">
-        <h3>Av. Azmi Gülşen</h3>
-        <p>Selçuk Üniversitesi Hukuk Fakültesi</p>
-    </div>
-</div>
-</section>
-
-<section id="services">
-<h2>Çalışma Alanlarımız</h2>
-<div class="services-container">
-    <div class="service">Gayrimenkul Hukuku
-        <div class="service-detail">
-        Ortaklığın Giderilmesi Davaları, Tapu İptal ve Tescil Davaları, El Atmanın Önlenmesi Davaları, Kat Karşılığı İnşaat Sözleşmelerinden Doğan Davalar, Kadastro Tespitinden Kaynaklanan Davalar, Ruhsatsız Yapıdan Kaynaklı Davalar, Ecrimisil Davaları, Taşkın Yapıdan Kaynaklı Davalar.
+    <nav>
+        <div class="nav-inner">
+            <a href="#home" class="logo">GÜLŞEN <span>HUKUK</span></a>
+            <div class="nav-links">
+                <a href="#about">Hakkımızda</a>
+                <a href="#services">Alanlarımız</a>
+                <a href="#career">Kariyer</a>
+                <a href="#contact">İletişim</a>
+            </div>
         </div>
-    </div>
-    <div class="service">Ceza Hukuku</div>
-    <div class="service">Tazminat Hukuku</div>
-    <div class="service">Borçlar Hukuku
-        <div class="service-detail">
-        Sözleşmelerden Kaynaklanan Her Türlü Dava ve Takip İşleri, Sebepsiz Zenginleşme Kaynaklı Davalar, Haksız Fiilden Kaynaklı Tazminat Davaları.
-        </div>
-    </div>
-    <div class="service">İş Hukuku</div>
-    <div class="service">Ticaret Hukuku
-        <div class="service-detail">
-        Şirketler Hukuku, Kıymetli Evrak, Çek ve Senet Hukuku, Ticari İşletme Hukuku
-        </div>
-    </div>
-    <div class="service">İdare Hukuku
-        <div class="service-detail">
-        İdari İşlemlerin İptali Davaları, İdari İşlem ve Eylemlerden Kaynaklanan Tam Yargı (Alacak) Davaları, Memuriyete İlişkin Davalar.
-        </div>
-    </div>
-    <div class="service">Aile ve Boşanma Hukuku
-        <div class="service-detail">
-        Boşanma Davaları, Velayet Davaları, Nafaka Davaları, Evliliğin Feshi ve İptali Davaları.
-        </div>
-    </div>
-    <div class="service">Miras Hukuku
-        <div class="service-detail">
-        Muris Muvazaasından Kaynaklana Davalar, Tenkis Davaları.
-        </div>
-    </div>
-    <div class="service">Kira Hukuku</div>
-</div>
-</section>
+    </nav>
 
-<section id="career">
-<h2>Gülşen Hukukta Kariyer</h2>
-<p>
-Gülşen Hukuk Bürosu olarak, yeni mezun veya konusunda deneyimli avukatların ve stajyerlerin başvurularını değerlendirmekte ve kariyer gelişimlerini desteklemekteyiz.<br>
-Özgeçmişlerinizi <a href="mailto:gulsenavukatlik@hotmail.com">gulsenavukatlik@hotmail.com</a> adresine gönderebilirsiniz.
-</p>
-</section>
+    <header id="home">
+        <div class="hero-content">
+            <p class="hero-tagline">Avukatlık & Danışmanlık Hizmetleri</p>
+            <h1>Gülşen Hukuk <br>Bürosu</h1>
+        </div>
+    </header>
 
-<section id="contact">
-<h2>İletişim</h2>
-<div class="contact-bar">
-<div>📞 0324-515-5525</div>
-<div>✉️ <a href="mailto:gulsenavukatlik@hotmail.com">gulsenavukatlik@hotmail.com</a></div>
-<div>
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
-<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-</svg>
-<span>Merkez Mah. Türbe Cad. No:49 Ömer Seçkin Apt. Kat:2 D:3, Erdemli / Mersin</span>
-<a href="https://maps.app.goo.gl/eqTmyrEJGcnrtBs36" target="_blank">Haritada Gör</a>
-</div>
-</div>
-</section>
+    <section id="about" class="container">
+        <span class="section-label">01 / EKİBİMİZ</span>
+        <div class="team-grid">
+            
+            <div class="member">
+                <div class="member-photo-container">
+                    <img src="C:\Users\aseln\OneDrive\Masaüstü\albüm içün\MUCE7283.JPG" alt="Av. Recep Gülşen" class="member-photo">
+                </div>
+                <h3>Av. Recep Gülşen</h3>
+                <p>İstanbul Üniversitesi Hukuk Fakültesi</p>
+            </div>
 
-<footer>
-    <div class="contact-bar">
-        <div>© 2026 Gülşen Hukuk Bürosu</div>
-        <div>Designed by Gülşen Hukuk</div>
-    </div>
-</footer>
+            <div class="member">
+                <div class="member-photo-container" style="border: 2px dashed #ccc; background: #fafafa;">
+                    </div>
+                <h3>Arabulucu Av. Nurbanu Gülşen</h3>
+                <p>Marmara Üniversitesi Hukuk Fakültesi</p>
+            </div>
+            
+            <div class="member">
+                <div class="member-photo-container" style="border: 2px dashed #ccc; background: #fafafa;">
+                    </div>
+                <h3>Av. Azmi Gülşen</h3>
+                <p>Selçuk Üniversitesi Hukuk Fakültesi</p>
+            </div>
+        </div>
+    </section>
 
-<a href="https://wa.me/905321234567" class="whatsapp">WhatsApp</a>
+    <section id="services" class="dark-section">
+        <div class="container">
+            <span class="section-label" style="color: rgba(255,255,255,0.4);">02 / ÇALIŞMA ALANLARIMIZ</span>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h4>Gayrimenkul Hukuku</h4>
+                    <p>Ortaklığın Giderilmesi Davaları, Tapu İptal ve Tescil Davaları, El Atmanın Önlenmesi Davaları, Kat Karşılığı İnşaat Sözleşmelerinden Doğan Davalar, Kadastro Tespitinden Kaynaklanan Davalar, Ruhsatsız Yapıdan Kaynaklı Davalar, Ecrimisil Davaları, Taşkın Yapıdan Kaynaklı Davalar vd...</p>
+                </div>
+                <div class="service-item"><h4>Ceza Hukuku</h4><p>Ceza Uyuşmazlıklarında Danışmanlık ve Avukatlık Hizmetleri</p></div>
+                <div class="service-item"><h4>Tazminat Hukuku</h4><p>Trafik Kazalarından Doğan Davalar, Ölüm ve Cismani Zarardan Kaynaklı Davalar ve Diğer Haksız Fiilden Doğan Davalar</p></div>
+                <div class="service-item">
+                    <h4>Borçlar Hukuku</h4>
+                    <p>Sözleşmelerden Kaynaklanan Her Türlü Dava ve Takip İşleri, Sebepsiz Zenginleşme Kaynaklı Davalar, Haksız Fiilden Kaynaklı Tazminat Davaları.</p>
+                </div>
+                <div class="service-item"><h4>İş Hukuku</h4><p>Kıdem, İhbar Tazminatları ve Diğer İşçilik Alacaklarından Doğan Davalar, İş Kazalarından Doğan Davalar, Mobbingden Doğan Davalar, İşverenlere İş Hukuku Danışmanlığı </p></div>
+                <div class="service-item">
+                    <h4>Ticaret Hukuku</h4>
+                    <p>Şirketler Hukuku, Kıymetli Evrak, Çek ve Senet Hukuku, Ticari İşletme Hukuku</p>
+                </div>
+                <div class="service-item">
+                    <h4>İdare Hukuku</h4>
+                    <p>İdari İşlemlerin İptali Davaları, İdari İşlem ve Eylemlerden Kaynaklanan Tam Yargı (Alacak) Davaları, Memuriyete İlişkin Davalar.</p>
+                </div>
+                <div class="service-item">
+                    <h4>Aile ve Boşanma Hukuku</h4>
+                    <p>Boşanma Davaları, Mal Rejimi Davaları, Katılma Alacağı Davaları, Velayet Davaları, Nafaka Davaları,</p>
+                </div>
+                <div class="service-item">
+                    <h4>Miras Hukuku</h4>
+                    <p>Muris Muvazaasından Kaynaklanan Davalar, Tenkis Davaları, Denkleştirme Alacağı Davaları, Mirasçılara ve Ölüme Bağlı Tasarrufta Bulunacaklara Danışmanlık Hizmetleri</p>
+                </div>
+                <div class="service-item"><h4>Kira Hukuku</h4><p>Tahliye Davaları ve Kira Sözleşmesi Uyuşmazlıkları.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="container">
+        <span class="section-label">03 / Kariyer</span>
+        <p>Gülşen Hukuk Bürosu olarak, yeni mezun veya deneyimli avukatların staj-iş başvurularını değerlendirmekte ve kariyer gelişimlerini desteklemekteyiz. <br><br> Özgeçmiş: <strong>gulsenavukatlik@hotmail.com</strong></p>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="contact-info">
+                <span class="section-label">İLETİŞİM</span>
+                <p>📞 0324 515 55 25</p>
+                <p>✉️ gulsenavukatlik@hotmail.com</p>
+                <p>📍 Merkez Mah. Türbe Cad. No:49 Ömer Seçkin Apt. Kat:2 D:3, Erdemli / Mersin</p>
+                <a href="https://maps.google.com/?q=Erdemli+Gülşen+Hukuk" target="_blank" class="map-btn">HARİTADA GÖRÜNTÜLE →</a>
+            </div>
+            <div style="text-align: right; color: var(--text-muted); font-size: 0.8rem;">
+                <p>© 2026 GÜLŞEN HUKUK</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/905011528433" class="wa-float" target="_blank">WhatsApp</a>
 
 </body>
 </html>
