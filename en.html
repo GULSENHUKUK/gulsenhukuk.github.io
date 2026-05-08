@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gülşen | Law Firm</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Inter:wght@200;300;400;600;800&display=swap">
+
+    <style>
+        :root { 
+            --bg: #ffffff; 
+            --dark: #0a0a0a; 
+            --accent: #b5a482; 
+            --accent-dark: #8e7f62;
+            --gray-light: #f9f9f9; 
+            --border: #ececec; 
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--dark); font-family: 'Inter', sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        
+        .container { padding: 0 10%; max-width: 1600px; margin: 0 auto; }
+
+        /* --- Navigation --- */
+        nav { position: fixed; width: 100%; top: 0; z-index: 1000; background: transparent; transition: var(--transition); padding: 40px 0; }
+        nav.scrolled { padding: 20px 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; letter-spacing: 5px; font-size: 1.3rem; text-transform: uppercase; text-decoration: none; color: var(--dark); }
+        .logo span { font-weight: 200; color: var(--accent); }
+        .nav-links { display: flex; align-items: center; gap: 45px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; opacity: 0.5; }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
+
+        /* --- Hero Section --- */
+        header { height: 100vh; display: flex; align-items: center; background: #ffffff; position: relative; overflow: hidden; }
+        header::before { content: ''; position: absolute; width: 60%; height: 100%; right: 0; top: 0; background: #f8f8f8; z-index: 0; clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%); }
+        .hero-content { position: relative; z-index: 1; width: 100%; }
+        .hero-tagline { font-size: 0.8rem; letter-spacing: 8px; text-transform: uppercase; color: var(--accent); font-weight: 800; margin-bottom: 25px; display: block; }
+        header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 300; line-height: 1; margin-bottom: 40px; color: var(--dark); letter-spacing: -2px; }
+        header h1 b { font-weight: 600; display: block; font-style: italic; color: var(--accent); letter-spacing: 0; }
+        .hero-desc { font-size: 1.1rem; color: #666; max-width: 550px; font-weight: 300; border-left: 3px solid var(--accent); padding-left: 35px; line-height: 1.8; }
+
+        /* --- Reveal Animations --- */
+        section { padding: 140px 0; opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        section.reveal { opacity: 1; transform: translateY(0); }
+        .section-label { font-size: 0.75rem; letter-spacing: 6px; font-weight: 800; margin-bottom: 70px; display: block; color: var(--accent); text-transform: uppercase; }
+
+        /* --- Team --- */
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .member { position: relative; }
+        .member-photo-container { position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 25px; border-radius: 4px; filter: grayscale(1); transition: var(--transition); }
+        .member:hover .member-photo-container { filter: grayscale(0); transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+        .member-photo { width: 100%; height: 100%; object-fit: cover; }
+        .member h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 8px; font-weight: 600; }
+        .member p { font-size: 0.7rem; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; font-weight: 800; }
+
+        /* --- Practice Areas --- */
+        .dark-section { background: var(--dark); color: #fff; padding: 160px 0; }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .service-item { padding: 50px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); transition: var(--transition); border-radius: 8px; }
+        .service-item:hover { background: rgba(255,255,255,0.07); border-color: var(--accent); }
+        .service-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent); margin-bottom: 20px; font-weight: 400; }
+        .service-item p { font-size: 0.95rem; opacity: 0.6; font-weight: 300; }
+
+        /* --- Career --- */
+        .career-box { background: var(--gray-light); padding: 120px 60px; text-align: center; border-radius: 4px; }
+        .career-box h2 { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; margin-bottom: 25px; font-weight: 500; }
+        .email-link { color: var(--dark); text-decoration: none; font-weight: 800; border-bottom: 2px solid var(--accent); font-size: 1.3rem; transition: 0.3s; padding-bottom: 5px; }
+        .email-link:hover { color: var(--accent); }
+
+        /* --- Footer & Contact --- */
+        footer { background: #fff; padding: 100px 0 50px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 80px; }
+        .contact-detail { margin-bottom: 40px; }
+        .contact-detail span { display: block; font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); font-weight: 800; margin-bottom: 12px; text-transform: uppercase; }
+        .contact-detail p { font-size: 1.3rem; font-weight: 300; color: #333; }
+        
+        .map-link {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--dark);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .map-link:hover { color: var(--accent); }
+
+        /* --- WhatsApp --- */
+        .wa-float { position: fixed; bottom: 40px; right: 40px; background: #25D366; color: #fff; padding: 20px 35px; font-size: 0.8rem; font-weight: 800; letter-spacing: 2px; text-decoration: none; z-index: 1000; border-radius: 50px; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2); transition: var(--transition); text-transform: uppercase; }
+        .wa-float:hover { transform: scale(1.05) translateY(-5px); }
+
+        @media (max-width: 1024px) { 
+            .container { padding: 0 8%; }
+            header h1 { font-size: 3.8rem; }
+            header::before { display: none; }
+            .team-grid, .services-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#home" class="logo">GÜLŞEN <span>LAW FIRM</span></a>
+            <div class="nav-links">
+                <a href="#about">Our Team</a>
+                <a href="#services">Practice Areas</a>
+                <a href="#career">Career</a>
+                <a href="#contact">Contact Us</a>
+                <div style="margin-left: 20px; display: flex; gap: 10px;">
+                    <a href="index.html">TR</a>
+                    <span style="opacity: 0.2;">/</span>
+                    <a href="en.html" style="color: var(--accent); opacity: 1;">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home">
+        <div class="container hero-content">
+            <span class="hero-tagline">Legal Advocacy & Consultancy</span>
+            <h1>GÜLŞEN <b>LAW FIRM</b></h1>
+            <p class="hero-desc">Providing high-standard legal solutions with a commitment to integrity, excellence, and result-oriented advocacy.</p>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <span class="section-label">01 / Professionals</span>
+        <div class="team-grid">
+            <div class="member">
+                <div class="member-photo-container"><img src="resimler/recep.jpg" alt="Recep GÜLŞEN" class="member-photo"></div>
+                <p>Attorney at Law</p>
+                <h3>Recep GÜLŞEN</h3>
+            </div>
+            <div class="member">
+                <div class="member-photo-container"><img src="resimler/nurbanu.jpg" alt="Nurbanu GÜLŞEN" class="member-photo"></div>
+                <p>Attorney at Law | Mediator</p>
+                <h3>Nurbanu GÜLŞEN</h3>
+            </div>
+            <div class="member">
+                <div class="member-photo-container"><img src="resimler/azmi.jpg" alt="Azmi GÜLŞEN" class="member-photo"></div>
+                <p>Attorney at Law</p>
+                <h3>Azmi GÜLŞEN</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="dark-section">
+        <div class="container">
+            <span class="section-label">02 / Practice Areas</span>
+            <div class="services-grid">
+                <div class="service-item"><h4>Real Estate Law</h4><p>Dissolution of partnerships, title deed cancellation and registration, construction agreements in return for land share, and comprehensive property disputes.</p></div>
+                <div class="service-item"><h4>Criminal Law</h4><p>Strategic defense and legal consultancy across all stages of criminal proceedings and litigation.</p></div>
+                <div class="service-item"><h4>Tort & Compensation Law</h4><p>Material and non-pecuniary compensation claims arising from traffic accidents, workplace injuries, and tortious acts.</p></div>
+                <div class="service-item"><h4>Law of Obligations</h4><p>Contract drafting and management, unjust enrichment, and debt recovery processes.</p></div>
+                <div class="service-item"><h4>Labor & Employment Law</h4><p>Comprehensive consultancy for both employers and employees regarding severance, notice pay, and reinstatement claims.</p></div>
+                <div class="service-item"><h4>Commercial Law</h4><p>Corporate governance, commercial enterprise law, and disputes regarding negotiable instruments.</p></div>
+                <div class="service-item"><h4>Administrative Law</h4><p>Annulment of administrative acts, full remedy actions, and disputes regarding civil servant regulations.</p></div>
+                <div class="service-item"><h4>Family & Divorce Law</h4><p>Contested and uncontested divorce proceedings, alimony, child custody, and matrimonial property regimes.</p></div>
+                <div class="service-item"><h4>Inheritance Law</h4><p>Certificates of inheritance, reduction of testamentary dispositions, and collusion of the legator (muris muvazaası).</p></div>
+                <div class="service-item"><h4>Tenancy Law</h4><p>Eviction proceedings, rent determination lawsuits, and the drafting of complex lease agreements.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="container">
+        <div class="career-box">
+            <h2>Career & Development</h2>
+            <p style="margin-bottom: 30px; font-weight: 300;">Gülşen Law Firm is always looking for talented individuals. We evaluate internship and job applications from both newly qualified and experienced attorneys.</p>
+            <a href="mailto:gulsenavukatlik@hotmail.com" class="email-link">gulsenavukatlik@hotmail.com</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-grid">
+            <div class="contact-info">
+                <span class="section-label" style="text-align: left; margin-bottom: 40px;">03 / Contact</span>
+                <div class="contact-detail">
+                    <span>Location</span>
+                    <p>Merkez Mah. Türbe Cad. No:49 Ömer Seçkin Apt. Floor:2 D:3, Erdemli / Mersin</p>
+                    <a href="https://share.google/2HYIk8ay2YoqkAkNt" target="_blank" class="map-link">View on Google Maps →</a>
+                </div>
+                <div class="contact-detail"><span>Email</span><p>gulsenavukatlik@hotmail.com</p></div>
+                <div class="contact-detail"><span>Phone</span><p>+90 324 515 55 25</p></div>
+            </div>
+            <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
+                <p style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.4;">© 2026 GÜLŞEN LAW FIRM. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/905011528433" class="wa-float" target="_blank">WhatsApp Inquiry</a>
+
+    <div id="announcementPopup" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px);">
+        <div style="background-color: #fff; margin: 10% auto; padding: 40px; border-radius: 12px; max-width: 600px; position: relative; border-top: 6px solid #d93025; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
+            <span onclick="closePopup()" style="position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #aaa;">×</span>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <span style="font-size: 40px;">⚠️</span>
+                <h2 style="font-family: 'Cormorant Garamond', serif; color: #d93025; font-size: 2.2rem; margin-top: 10px;">IMPORTANT NOTICE</h2>
+            </div>
+            <p style="font-size: 1.1rem; color: #333; line-height: 1.8; text-align: center; margin-bottom: 25px;">
+                We have been made aware of fraudulent SMS messages being distributed using the name of <b>Gülşen Law Firm</b>. Our firm has no affiliation with these unauthorized communications.
+            </p>
+            <p style="font-size: 1rem; color: #666; text-align: center; font-style: italic; background: #fdf2f2; padding: 15px; border-radius: 6px;">
+                Please refrain from clicking on suspicious links and disregard any requests not sent via our official communication channels.
+            </p>
+            <button onclick="closePopup()" style="display: block; width: 100%; padding: 15px; margin-top: 25px; background-color: #0a0a0a; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; letter-spacing: 1px;">ACKNOWLEDGE</button>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) { nav.classList.add('scrolled'); } 
+            else { nav.classList.remove('scrolled'); }
+        });
+
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('reveal'); }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => { observer.observe(section); });
+
+        window.onload = function() {
+            setTimeout(() => { document.getElementById('announcementPopup').style.display = 'block'; }, 1000);
+        };
+        function closePopup() { document.getElementById('announcementPopup').style.display = 'none'; }
+    </script>
+</body>
+</html>
